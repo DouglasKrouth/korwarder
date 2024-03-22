@@ -1,12 +1,16 @@
-# korwarder 
-## Dependencies
-### User
-Kubectl - latest [https://kubernetes.io/docs/tasks/tools/](kubectl download)
-- TODO : pin a version
-### Development only
-Kind - latest [https://kind.sigs.k8s.io/](kind download)
-- Used for running k8's 
+# korwarder (maybe rename to "korridor")?
 
-## Notes on testing
-Tests will need a way of simulating K8's for use in trying out port forward commands
-- Idea is to use *kind* to implement a basic k8's image that has some exposed ports which we can run port forwards against for testing
+**Goal** : Create a simple-to-use, out-of-cluster, terminal based ui (TUI) that simplifies using port-forwards from the command line.
+
+**Stack**
+Language : Golang, bash
+Main deps
+* client-go : https://github.com/kubernetes/client-go
+  * For handling k8's work
+* bubbletea : https://github.com/charmbracelet/bubbletea
+  * For TUI/UI in terminal. Need to investigate zsh compatibility, probably won't support non-POSIX compliant terms immediately.
+
+**Potential Enhancements**
+1. Have configuration in place to recognize which kube context you're currently in, adjust accordingly.
+2. Add goroutine logic to enable multiple threads (port-forwards) to run simultaneously.
+3. General UI QOL stuff (TBD)
