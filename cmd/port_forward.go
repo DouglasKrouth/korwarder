@@ -3,7 +3,6 @@ package main
 
 import (
     "fmt"
-    "log"
 )
 
 // represents a single instance of a `kubectl` port-forward command

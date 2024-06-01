@@ -1,11 +1,13 @@
 // User entry point for `korwarder`. Responsible for starting cli and all related funcs.
 package main
 
-// import (
+import (
 // "log"
 // "os/exec"
 //    "fmt"
-// )
+    "github.com/rs/zerolog"
+    "github.com/rs/zerolog/log"
+)
 
 // func pf(port int) {
 //     p := fmt.Sprintf("27017:%d", port)
@@ -23,6 +25,10 @@ package main
 
 func main() {
     PortForward("kubectl do something")
+    zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+    log.Print("hello world")
+
+
     // pf(27017)
     // go pf(27087)
 

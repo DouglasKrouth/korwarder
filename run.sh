@@ -2,5 +2,5 @@
 
 ./build.sh
 
-cd cmd > /dev/null 2>&1
+cd ./bin > /dev/null 2>&1
 ./cmd
