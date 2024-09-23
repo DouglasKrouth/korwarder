@@ -1,6 +1,11 @@
 package main
 
-import "github.com/google/uuid"
+import (
+	"github.com/google/uuid"
+	"github.com/rs/zerolog/log"
+	"os"
+	"path/filepath"
+)
 
 // Represents a single port-forward object
 type PortForward struct {
@@ -15,9 +20,40 @@ type Korwarder struct {
 	appDataPath string
 }
 
+// Whether or not we have any
+func (k *Korwarder) checkIfStorageExists() bool {
+	var storagePath = filepath.Join(k.appDataPath, "data.json")
+	_, err := os.Stat(storagePath)
+	if os.IsNotExist(err) {
+		log.Debug().Msgf("No stored korwarder data found at %s", storagePath)
+		return false
+	}
+	return true
+}
+
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
+}
+
+// TODO : this needs to be fleshed out
+func (k *Korwarder) loadStorage() bool {
+	var storagePath = filepath.Join(k.appDataPath, "data.json")
+	if k.checkIfStorageExists() {
+		data, err := os.ReadFile(storagePath)
+		check(err)
+		log.Printf("%v\n", data)
+	} else {
+		// TODO : implement?
+		log.Debug().Msgf("No .korwarder storage found at %s", storagePath)
+		return false
+	}
+	return true
+}
+
 func (k *Korwarder) addPortForward(toAdd PortForward) map[string]PortForward {
 	k.pfs[uuid.New().String()] = toAdd
-	// k.pfs = append(k.pfs, toAdd)
 	return k.pfs
 }
 
