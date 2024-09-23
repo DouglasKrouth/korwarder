@@ -1,6 +1,7 @@
 # korwarder (maybe rename to "korridor")?
 
-**Goal** : Create a simple-to-use, out-of-cluster, terminal based ui (and TUI?) that simplifies using port-forwards from the command line.
+**Goal** : Create a simple-to-use, out-of-cluster, terminal based ui (and TUI?) that simplifies using port-forwards from the command line. This project does not do anything fancy with the Kubernetes API/SDK, just calls `kubectl` directly to handle any `port-forward` operations.
+
 **Core functionality**
 1. Ability to save, edit, delete port-forward commands
 2. Check running port-forwards
