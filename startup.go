@@ -10,8 +10,8 @@ import (
 func startup() string {
 	checkKubectlInstalled()
 	var appDataPath = setupAppDataFolder()
-    log.Printf("%s", appDataPath)
-    return appDataPath
+	log.Printf("%s", appDataPath)
+	return appDataPath
 }
 
 func checkKubectlInstalled() {
