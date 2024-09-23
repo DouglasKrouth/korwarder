@@ -4,29 +4,38 @@ import "github.com/google/uuid"
 
 // Represents a single port-forward object
 type PortForward struct {
-    command string
-    group string
-    ID string
+	command string
+	// TODO : implement groups
+	// groups []string
 }
 
 // Contains available port-forwards, relationships at runtime
 type Korwarder struct {
-    // TODO : Need to convert this into something like map[pf_uuid][]PortForward
-    // TODO : update PortForward object to have uuid passed as param, pass uuid as param
-    pfs []PortForward
+	pfs         map[string]PortForward
+	appDataPath string
 }
 
-func (k *Korwarder) addPortForward(toAdd PortForward) []PortForward {
-    k.pfs = append(k.pfs, toAdd)
-    return k.pfs
+func (k *Korwarder) addPortForward(toAdd PortForward) map[string]PortForward {
+	k.pfs[uuid.New().String()] = toAdd
+	// k.pfs = append(k.pfs, toAdd)
+	return k.pfs
 }
 
-func (k *Korwarder) addPortForwardByCommand(command string, group string) []PortForward {
-    k.pfs = append(k.pfs, PortForward{command, group, uuid.New().String()})
-    return k.pfs
+func (k *Korwarder) addPortForwardByCommand(command string) map[string]PortForward {
+	k.pfs[uuid.New().String()] = PortForward{command}
+	return k.pfs
 }
 
-// TODO : Needs to be implemented
-func (k *Korwarder) removePortForwardByID(toRemove PortForward) []PortForward {
-    return k.pfs
+func (k *Korwarder) getPortForwards() []PortForward {
+	x := make([]PortForward, 0, len(k.pfs))
+
+	for _, value := range k.pfs {
+		x = append(x, value)
+	}
+	return x
 }
+
+// // TODO : Needs to be implemented
+// func (k *Korwarder) removePortForwardByID(toRemove PortForward) []PortForward {
+//     return k.pfs
+// }
