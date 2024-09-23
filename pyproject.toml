@@ -7,6 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+urwid = "^2.6.15"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -29,3 +30,8 @@ testpaths = [
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+# TODO : Set this up when we're ready to bundle the project with pipx
+# https://python-poetry.org/docs/pyproject/#script
+# [tool.poetry.scripts]
+# my_package_cli = 'my_package.console:run'

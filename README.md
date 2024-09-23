@@ -7,12 +7,7 @@
 
 **Components**
 - forward module : handles start/stop for goroutines to run pf's, restart/retry policy
-- korwarder module : Actual application, contains main
-
-**Stack**
-Language : Rust, bash
-Main deps
-    - Ratatui
+- tui module : Actual application, contains main
 
 **Potential Enhancements**
 1. Have configuration in place to recognize which kube context you're currently in, adjust accordingly.
