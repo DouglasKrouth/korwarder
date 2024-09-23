@@ -1,13 +1,16 @@
 # korwarder (maybe rename to "korridor")?
 
-**Goal** : Create a simple-to-use, out-of-cluster, terminal based ui (TUI) that simplifies using port-forwards from the command line.
+**Goal** : Create a simple-to-use, out-of-cluster, terminal based ui (and TUI?) that simplifies using port-forwards from the command line.
 **Core functionality**
-- User selects which port-forward(s) they want to run. 
-- Tui interaction shows existing (live) port-forwards currently running on the machine.
+1. Ability to save, edit, delete port-forward commands
+2. Check running port-forwards
+3. Ability to add comments/data about port-forward commands (example. "#dev service", etc.)
+4. Ability to group multiple port-forward commands together, run all of them with a single command.
+
+**Extra functionality**
+1. Have the ability to change (automatically?) the list of port-forwards/commands based on the cluster context.
+
 
 **Components**
 - forward module : handles start/stop for goroutines to run pf's, restart/retry policy
 - tui module : Actual application, contains main
-
-**Potential Enhancements**
-1. Have configuration in place to recognize which kube context you're currently in, adjust accordingly.
