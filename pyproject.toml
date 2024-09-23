@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "korwarder"
+version = "0.1.0"
+description = ""
+authors = ["DouglasKrouth <douglaskrouth@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+pyflakes = "^3.2.0"
+black = "^24.8.0"
+isort = "^5.13.2"
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+    "integration",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
